@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bakery.Product.DomainApi\Bakery.Product.DomainApi.csproj" />
+    <ProjectReference Include="..\Bakery.Product.Persistence.Adapter\Bakery.Product.Persistence.Adapter.csproj" />
+  </ItemGroup>
+
+</Project>
