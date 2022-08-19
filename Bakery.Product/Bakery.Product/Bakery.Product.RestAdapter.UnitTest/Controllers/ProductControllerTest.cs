@@ -16,7 +16,7 @@ namespace Bakery.Product.RestAdapter.UnitTest.Controllers
         public void Setup()
         {
             _requestProductMock = new Mock<IRequestProduct<ProductModel>>();
-            _controller = new ProductController(_requestProductMock.Object);
+            _controller = new ProductController(_requestProductMock.Object, null);
         }
 
         [Test]

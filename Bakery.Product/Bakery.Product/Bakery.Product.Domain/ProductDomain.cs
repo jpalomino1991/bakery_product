@@ -33,5 +33,12 @@ namespace Bakery.Product.Domain
             _dbContext.SaveChanges();
             return value;
         }
+
+        public T UpdateValue(T value)
+        {
+            table.Update(value);
+            _dbContext.SaveChanges();
+            return value;
+        }
     }
 }

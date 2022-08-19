@@ -1,6 +1,9 @@
-﻿using Bakery.Product.DomainApi.Port;
+﻿using Bakery.Commons.Bakery.Commons.Domain.Port;
+using Bakery.Product.DomainApi.Port;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Bakery.Product.RestAdapter.Controllers.v1
 {
@@ -10,10 +13,12 @@ namespace Bakery.Product.RestAdapter.Controllers.v1
     public class ProductController : ControllerBase
     {
         private readonly IRequestProduct<Bakery.Product.DomainApi.Model.Product> _requestProduct;
+        private readonly IStorageAccountHelper _storageAccountHelper;
 
-        public ProductController(IRequestProduct<Bakery.Product.DomainApi.Model.Product> requestProduct)
+        public ProductController(IRequestProduct<Bakery.Product.DomainApi.Model.Product> requestProduct, IStorageAccountHelper storageAccountHelper)
         {
             _requestProduct = requestProduct;
+            _storageAccountHelper = storageAccountHelper;
         }
 
         [HttpGet]
@@ -40,6 +45,16 @@ namespace Bakery.Product.RestAdapter.Controllers.v1
             if (result == null)
                 return BadRequest("Product already exists");
             return Ok(result);
+        }
+
+        [HttpPost(nameof(Upload))]
+        public async Task<IActionResult> Upload(IFormFile file, int productId)
+        {
+            string blobPath = await _storageAccountHelper.UploadFileAsync(file);
+            var product = _requestProduct.GetValue(productId);
+            product.ImageUrl = blobPath;
+            _requestProduct.UpdateValue(product);
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

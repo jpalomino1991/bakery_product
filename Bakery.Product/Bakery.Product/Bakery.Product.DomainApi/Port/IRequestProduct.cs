@@ -7,5 +7,6 @@ namespace Bakery.Product.DomainApi.Port
         List<T> GetValues();
         T GetValue(int id);
         T AddValue(T value);
+        T UpdateValue(T value);
     }
 }

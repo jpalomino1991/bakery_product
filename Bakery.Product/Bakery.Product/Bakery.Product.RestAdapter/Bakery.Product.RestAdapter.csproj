@@ -6,12 +6,19 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.13.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bakery.Product.Persistence.Adapter\Bakery.Product.Persistence.Adapter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Bakery.Commons">
+      <HintPath>..\Bakery.Product.DomainApi\Bakery.Commons.dll</HintPath>
+    </Reference>
   </ItemGroup>
   
 </Project>

@@ -17,4 +17,10 @@
     <ProjectReference Include="..\Bakery.Product.RestAdapter\Bakery.Product.RestAdapter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Bakery.Commons">
+      <HintPath>..\Bakery.Product.DomainApi\Bakery.Commons.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
