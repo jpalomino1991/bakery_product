@@ -1,5 +1,5 @@
-﻿using Bakery.Product.DomainApi.Model;
-using Bakery.Product.DomainApi.Port;
+﻿using Bakery.Product.DomainApi.Port;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bakery.Product.RestAdapter.Controllers.v1
@@ -8,19 +8,19 @@ namespace Bakery.Product.RestAdapter.Controllers.v1
     [Route("api/v{version:apiVersion}/[controller]")]
     public class DealController : ControllerBase
     {
-        private readonly IRequestDeal<Deal> _requestDeal;
+        private readonly IRequestDeal<Bakery.Product.DomainApi.Model.Deal> _requestDeal;
 
-        public DealController(IRequestDeal<Deal> requestDeal)
+        public DealController(IRequestDeal<Bakery.Product.DomainApi.Model.Deal> requestDeal)
         {
             _requestDeal = requestDeal;
         }
 
         // GET: api/deal
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetProducts()
         {
-            var result = _requestDeal.GetDeals();
-            return Ok(result);
+            var deals = _requestDeal.GetDeals();
+            return Ok(deals);
         }
 
         // GET: api/deal/1
