@@ -25,7 +25,7 @@ namespace Bakery.Product.RestAdapter.Controllers.v1
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetProduct(int id)
         {
             var result = _requestProduct.GetValue(id);
             return Ok(result);

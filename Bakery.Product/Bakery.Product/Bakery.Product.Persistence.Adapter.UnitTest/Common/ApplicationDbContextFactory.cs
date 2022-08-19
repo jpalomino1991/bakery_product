@@ -3,18 +3,19 @@ using Bakery.Product.Persistence.Adapter.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using ProductModel = Bakery.Product.DomainApi.Model.Product;
 
 namespace Bakery.Product.Persistence.Adapter.UnitTest.Common
 {
     public static class ApplicationDbContextFactory
     {
-        public static List<Deal> GetDeals()
+        public static List<ProductModel> GetProducts()
         {
-            return new List<Deal>()
+            return new List<ProductModel>()
             {
-                new Deal(){Id=1, Name="ABC", Description="ABC deal 123"},
-                new Deal(){Id=2, Name="ABC", Description="ABC deal 456"},
-                new Deal(){Id=3, Name="ABC", Description="ABC deal 789"},
+                new ProductModel(){Id=1, Name="ABC", Description="ABC deal 123", Price = 1000,},
+                new ProductModel(){Id=2, Name="ABC", Description="ABC deal 456", Price = 2000,},
+                new ProductModel(){Id=3, Name="ABC", Description="ABC deal 789", Price = 3000,},
             };
         }
 
@@ -26,7 +27,7 @@ namespace Bakery.Product.Persistence.Adapter.UnitTest.Common
 
             var context = new ApplicationDbContext(options);
             context.Database.EnsureCreated();
-            context.Deals.AddRange(GetDeals());
+            context.Products.AddRange(GetProducts());
             context.SaveChanges();
             return context;
         }

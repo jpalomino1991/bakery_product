@@ -1,31 +1,32 @@
 ﻿using Bakery.Product.DomainApi.Model;
 using NUnit.Framework;
+using ProductModel = Bakery.Product.DomainApi.Model.Product;
 
 namespace Bakery.Product.DomainApi.UnitTest.Model
 {
-    public class DealTest
+    public class ProductTest
     {
-        private readonly Deal _deal;
+        private readonly ProductModel _product;
         private const string Name = "Test Deal name";
         private const string Description = "Test Deal description";
 
-        public DealTest()
+        public ProductTest()
         {
-            _deal = new Deal();
+            _product = new ProductModel();
         }
 
         [Test]
         public void TestSetAndGetName()
         {
-            _deal.Name = Name;
-            Assert.AreEqual(Name, _deal.Name);
+            _product.Name = Name;
+            Assert.AreEqual(Name, _product.Name);
         }
 
         [Test]
         public void TestSetAndGetDescription()
         {
-            _deal.Description = Description;
-            Assert.AreEqual(Description, _deal.Description);
+            _product.Description = Description;
+            Assert.AreEqual(Description, _product.Description);
         }
     }
 }
