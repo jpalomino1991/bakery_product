@@ -9,13 +9,13 @@ namespace Bakery.Product.RestAdapter.UnitTest.Controllers
 {
     public class DealControllerTest
     {
-        private DealController _controller;
-        private Mock<IRequestDeal<Deal>> _requestDealMock;
+        private ProductController _controller;
+        private Mock<IRequestProduct<Deal>> _requestDealMock;
 
         [SetUp]
         public void Setup()
         {
-            _requestDealMock = new Mock<IRequestDeal<Deal>>();
+            _requestDealMock = new Mock<IRequestProduct<Deal>>();
             _controller = new DealController(_requestDealMock.Object);
         }
 

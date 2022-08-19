@@ -33,7 +33,7 @@ namespace Bakery.Product
 
             services.AddControllers();
 
-            services.AddPersistence();
+            services.AddPersistence(AppSettings);
 
             services.AddDomain();
 

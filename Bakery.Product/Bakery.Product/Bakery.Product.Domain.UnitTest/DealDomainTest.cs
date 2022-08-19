@@ -6,14 +6,14 @@ namespace Bakery.Product.Domain.UnitTest
 {
     public class DealDomainTest
     {
-        private DealDomain<Deal> _dealDomain;
+        private ProductDomain<Deal> _dealDomain;
 
         [Test]
         public void GetDealsTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Deal>(context);
-            var deals = _dealDomain.GetDeals();
+            _dealDomain = new ProductDomain<Deal>(context);
+            var deals = _dealDomain.GetValues();
             Assert.AreEqual(3, deals.Count);
             Assert.AreEqual(1, deals[0].Id);
             Assert.AreEqual("ABC", deals[0].Name);
@@ -25,8 +25,8 @@ namespace Bakery.Product.Domain.UnitTest
         public void GetDealByIdTest()
         {
             using var context = ApplicationDbContextFactory.Create();
-            _dealDomain = new DealDomain<Deal>(context);
-            var deals = _dealDomain.GetDeal(1);
+            _dealDomain = new ProductDomain<Deal>(context);
+            var deals = _dealDomain.GetValue(1);
             Assert.AreEqual(1, deals.Id);
             Assert.AreEqual("ABC", deals.Name);
             Assert.AreEqual("ABC deal 123", deals.Description);
